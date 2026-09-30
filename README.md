@@ -16,19 +16,22 @@ This project demonstrates a manual incident triage of an enterprise network intr
 
 ### 1. Delivery Vector & Command-and-Control Isolation
 By analyzing the raw unencrypted inbound session tracking, I captured a direct external callback targeting the infrastructure. The compromised host initiated an outbound HTTP request to grab a remote execution payload.
-![Inbound C2 Connection] (screenshot1.png)
+
+![Inbound C2 Connection](Screenshot%201.png)
 
 *Figure 1: Raw connection capture exposing the remote host header and target resource endpoint.*
 
 ### 2. Malicious Payload Dissection
 The downloaded payload is an automated deployment bash script configured to run secondary execution routines out of volatile directory storage (`/tmp`). 
-![Malicious Script Analysis] (screenshot2.png)
+
+![Malicious Script Analysis](Screenshot%202.png)
 
 *Figure 2: Exploded view of the script logic showing redundant curl fallback routines and remote descriptor mapping.*
 
 ### 3. Incident Triage Environment Setup
 To ensure forensic isolation and prevent data cross-contamination on endpoint storage channels, raw files were structured across dedicated secondary storage targets within a sandboxed virtual container environment.
-![Forensic Workspace Environment] (screenshot3.png)
+
+![Forensic Workspace Environment](Screenshot%203.png)
 
 *Figure 3: Dedicated sandbox architecture setup used during log extraction.*
 
